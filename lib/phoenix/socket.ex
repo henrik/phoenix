@@ -547,13 +547,15 @@ defmodule Phoenix.Socket do
     else
       Logger.error """
       The :pubsub_server was not configured for endpoint #{inspect(endpoint)}.
-      Make sure to start a PubSub proccess in your application supervision tree:
+      Make sure to start a PubSub process in your application supervision tree:
 
           {Phoenix.PubSub, [name: YOURAPP.PubSub, adapter: Phoenix.PubSub.PG2]}
 
-      And then list it your endpoint config:
-
-          pubsub_server: YOURAPP.PubSub
+      And then add it to your endpoint config:
+      
+          config :YOURAPP, YOURAPPWeb.Endpoint,
+            # …
+            pubsub_server: YOURAPP.PubSub
       """
 
       :error
